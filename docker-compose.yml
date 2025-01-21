@@ -1,0 +1,17 @@
+services:
+  activemq:
+    image: apache/activemq-classic:5.18.6
+    container_name: activemq
+    ports:
+      - "8161:8161"  # Web Console
+      - "61616:61616"  # OpenWire protocol
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    volumes:
+      - activemq-data:/opt/activemq/data
+      - conf:/conf
+
+volumes:
+  activemq-data:
+  conf:

@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "46c2fb12-e374-477c-aeab-e53c8ed4aa7a",
+		"name": "Test workload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24949621"
+	},
+	"item": [
+		{
+			"name": "Add workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDcxMjUyLCJleHAiOjE3MzYwNzE4NTJ9.6qJEpMtyHVQasrVNuz_MGbSNlBRvyCcrwkecl4nPVfk"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Kathleen.Carr\",\r\n        \"trainerFirstName\": \"Kathleen\",\r\n        \"trainerLastName\": \"Carr\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2024-12-30\",\r\n        \"trainingDuration\": 40,\r\n        \"actionType\": \"ADD\"                \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Add workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDcxMjUyLCJleHAiOjE3MzYwNzE4NTJ9.6qJEpMtyHVQasrVNuz_MGbSNlBRvyCcrwkecl4nPVfk"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Coleman.Yates\",\r\n        \"trainerFirstName\": \"Coleman\",\r\n        \"trainerLastName\": \"Yates\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2025-08-30\",\r\n        \"trainingDuration\": 55,\r\n        \"actionType\": \"ADD\"                \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Add workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDc0OTQ2LCJleHAiOjE3MzYwNzU1NDZ9.sxaOAoo0vgW7YBqAigPA-5o7zqYk9ZUTv9BRXNM1iuE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Dave.Smith\",\r\n        \"trainerFirstName\": \"Dave\",\r\n        \"trainerLastName\": \"Smith\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2025-01-30\",\r\n        \"trainingDuration\": 60,\r\n        \"actionType\": \"ADD\"                \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Add workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDc0OTQ2LCJleHAiOjE3MzYwNzU1NDZ9.sxaOAoo0vgW7YBqAigPA-5o7zqYk9ZUTv9BRXNM1iuE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Kathleen.Carr\",\r\n        \"trainerFirstName\": \"Kathleen\",\r\n        \"trainerLastName\": \"Carr\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2023-02-27\",\r\n        \"trainingDuration\": 40,\r\n        \"actionType\": \"ADD\"               \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDc0OTQ2LCJleHAiOjE3MzYwNzU1NDZ9.sxaOAoo0vgW7YBqAigPA-5o7zqYk9ZUTv9BRXNM1iuE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Kathleen.Carr\",\r\n        \"trainerFirstName\": \"Kathleen\",\r\n        \"trainerLastName\": \"Carr\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2024-12-30\",\r\n        \"trainingDuration\": 40,\r\n        \"actionType\": \"DELETE\"                \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDc0OTQ2LCJleHAiOjE3MzYwNzU1NDZ9.sxaOAoo0vgW7YBqAigPA-5o7zqYk9ZUTv9BRXNM1iuE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"trainerUsername\": \"Kathleen.Carr\",\r\n        \"trainerFirstName\": \"Kathleen\",\r\n        \"trainerLastName\": \"Carr\",\r\n        \"active\": true,\r\n        \"trainingDate\": \"2024-03-30\",\r\n        \"trainingDuration\": 40,\r\n        \"actionType\": \"DELETE\"                \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8089/workload"
+			},
+			"response": []
+		},
+		{
+			"name": "Get workload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRUeXBlIjoidHJhaW5lciIsInVzZXJJRCI6IjMiLCJzdWIiOiJDb2xlbWFuLllhdGVzIiwiaWF0IjoxNzM2MDcxMjUyLCJleHAiOjE3MzYwNzE4NTJ9.6qJEpMtyHVQasrVNuz_MGbSNlBRvyCcrwkecl4nPVfk"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8089/workload?username=Kathleen.Carr&year=2021&month=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"workload"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Kathleen.Carr"
+						},
+						{
+							"key": "year",
+							"value": "2021"
+						},
+						{
+							"key": "month",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
