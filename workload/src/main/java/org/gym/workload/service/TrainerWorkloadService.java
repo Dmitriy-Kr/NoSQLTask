@@ -9,13 +9,11 @@ import org.gym.workload.repository.TrainerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
 public class TrainerWorkloadService {
     private final TrainerRepository repository;
 
@@ -25,7 +23,6 @@ public class TrainerWorkloadService {
         this.repository = repository;
     }
 
-    @Transactional
     public void process(WorkloadRequest request) throws ServiceException {
         try {
             switch (request.getActionType()) {

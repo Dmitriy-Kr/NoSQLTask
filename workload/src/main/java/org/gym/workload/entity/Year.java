@@ -1,20 +1,22 @@
 package org.gym.workload.entity;
 
 public class Year {
-    private Long id;
 
     private int yearNumber;
 
-    private int[] durationByMonths = new int[12];
+    private int[] durationByMonths;
 
-    public Long getId() {
-        return id;
+    public Year() {
+        durationByMonths = new int[12];
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Year(int yearNumber, int[] durationByMonths) {
+        if(durationByMonths.length != 12){
+            throw new IllegalArgumentException("Invalid array length. Must be 12.");
+        }
+        this.yearNumber = yearNumber;
+        this.durationByMonths = durationByMonths;
     }
-
     public int getYearNumber() {
         return yearNumber;
     }
@@ -28,6 +30,9 @@ public class Year {
     }
 
     public void setDurationByMonths(int[] durationByMonths) {
+        if(durationByMonths.length != 12){
+            throw new IllegalArgumentException("Invalid array length. Must be 12.");
+        }
         this.durationByMonths = durationByMonths;
     }
 }

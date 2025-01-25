@@ -24,6 +24,13 @@ public class Trainer {
     public Trainer() {
     }
 
+    public Trainer(String username, String firstname, String lastname, Boolean status, List<Year> years) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.status = status;
+        this.years = years;
+    }
 
     public String getId() {
         return id;

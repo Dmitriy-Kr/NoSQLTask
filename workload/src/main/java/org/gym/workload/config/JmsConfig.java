@@ -4,22 +4,21 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.hibernate.validator.HibernateValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.MongoDatabaseFactory;
-import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListenerConfigurer;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerEndpointRegistrar;
 import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -41,9 +40,6 @@ public class JmsConfig implements JmsListenerConfigurer {
 
     @Value("${spring.activemq.password}")
     private String password;
-
-    @Autowired
-    private MongoDatabaseFactory dbFactory;
 
     @Override
     public void configureJmsListeners(JmsListenerEndpointRegistrar registrar) {
@@ -91,11 +87,16 @@ public class JmsConfig implements JmsListenerConfigurer {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory());
         factory.setMessageConverter(jacksonJmsMessageConverter());
-        factory.setTransactionManager(transactionManager(dbFactory));
+        factory.setTransactionManager(jmsTransactionManager());
         factory.setErrorHandler(t -> {
-            LOGGER.info("Handling error in listening for messages, error: {}", t.getMessage() + t.getCause().getMessage());
+            LOGGER.info("Handling error in listening for messages, error: {}", t.getMessage() + "cause " + t.getCause().getMessage());
         });
         return factory;
+    }
+
+    @Bean
+    public PlatformTransactionManager jmsTransactionManager(){
+        return new JmsTransactionManager(connectionFactory());
     }
 
     @Bean
@@ -106,10 +107,4 @@ public class JmsConfig implements JmsListenerConfigurer {
         jmsTemplate.setSessionTransacted(true);
         return jmsTemplate;
     }
-
-    @Bean
-    MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
-        return new MongoTransactionManager(dbFactory);
-    }
-
 }
