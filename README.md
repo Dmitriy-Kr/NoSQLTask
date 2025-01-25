@@ -1,4 +1,7 @@
 # NoSQLTask
+
+Mongo DB schema:
+
 ```yaml
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
