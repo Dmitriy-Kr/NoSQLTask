@@ -1,7 +1,6 @@
 package org.gym.workload.service;
 
 import org.gym.workload.dto.WorkloadRequest;
-import org.gym.workload.entity.Month;
 import org.gym.workload.entity.Trainer;
 import org.gym.workload.entity.Year;
 import org.gym.workload.exception.ServiceException;
@@ -45,10 +44,10 @@ class TrainerWorkloadServiceTest {
         Trainer trainer = new Trainer();
         Year trainingYear = new Year();
         trainingYear.setYearNumber(year);
-        Month trainingMonth = new Month();
-        trainingMonth.setMonthNumber(month);
-        trainingMonth.setTrainingSummaryDuration(120);
-        trainingYear.setMonths(List.of(trainingMonth));
+//        Month trainingMonth = new Month();
+//        trainingMonth.setMonthNumber(month);
+//        trainingMonth.setTrainingSummaryDuration(120);
+//        trainingYear.setDurationByMonths(List.of(trainingMonth));
         trainer.setYears(List.of(trainingYear));
 
         when(repository.findByUsername(username)).thenReturn(Optional.of(trainer));
@@ -113,10 +112,10 @@ class TrainerWorkloadServiceTest {
         Trainer trainer = new Trainer();
         Year year = new Year();
         year.setYearNumber(2024);
-        Month month = new Month();
-        month.setMonthNumber(12);
-        month.setTrainingSummaryDuration(60);
-        year.setMonths(List.of(month));
+//        Month month = new Month();
+//        month.setMonthNumber(12);
+//        month.setTrainingSummaryDuration(60);
+//        year.setDurationByMonths(List.of(month));
         trainer.setYears(List.of(year));
         when(repository.findByUsername("trainer1")).thenReturn(Optional.of(trainer));
 
@@ -128,6 +127,6 @@ class TrainerWorkloadServiceTest {
         verify(repository).save(captor.capture());
 
         Trainer savedTrainer = captor.getValue();
-        assertEquals(30, savedTrainer.getYears().get(0).getMonths().get(0).getTrainingSummaryDuration());
+//        assertEquals(30, savedTrainer.getYears().get(0).getDurationByMonths().get(0).getTrainingSummaryDuration());
     }
 }

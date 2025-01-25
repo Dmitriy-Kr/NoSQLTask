@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListenerConfigurer;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
@@ -18,7 +20,6 @@ import org.springframework.jms.support.converter.MappingJackson2MessageConverter
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -42,7 +43,7 @@ public class JmsConfig implements JmsListenerConfigurer {
     private String password;
 
     @Autowired
-    private PlatformTransactionManager platformTransactionManager;
+    private MongoDatabaseFactory dbFactory;
 
     @Override
     public void configureJmsListeners(JmsListenerEndpointRegistrar registrar) {
@@ -90,7 +91,7 @@ public class JmsConfig implements JmsListenerConfigurer {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory());
         factory.setMessageConverter(jacksonJmsMessageConverter());
-        factory.setTransactionManager(platformTransactionManager);
+        factory.setTransactionManager(transactionManager(dbFactory));
         factory.setErrorHandler(t -> {
             LOGGER.info("Handling error in listening for messages, error: {}", t.getMessage() + t.getCause().getMessage());
         });
@@ -104,6 +105,11 @@ public class JmsConfig implements JmsListenerConfigurer {
         jmsTemplate.setDeliveryPersistent(true);
         jmsTemplate.setSessionTransacted(true);
         return jmsTemplate;
+    }
+
+    @Bean
+    MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
+        return new MongoTransactionManager(dbFactory);
     }
 
 }
